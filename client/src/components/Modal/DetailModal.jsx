@@ -3,15 +3,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
-import { Document, Page } from 'react-pdf';
 import { useModalContext } from '../../context/ModalContext';
 import { Button, Stack } from '@mui/material';
-import { pdfjs } from 'react-pdf';
-
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-   'pdfjs-dist/legacy/build/pdf.worker.min.mjs',
-    import.meta.url,
-).toString();
 
 const style = {
   position: 'absolute',
