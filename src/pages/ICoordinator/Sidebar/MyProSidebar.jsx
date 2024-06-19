@@ -7,8 +7,8 @@ import { useSidebarContext } from "./sidebarContext";
 import { NavLink } from "react-router-dom";
 import { useTheme, Box, Typography, IconButton } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
@@ -113,14 +113,14 @@ const MyProSidebar = () => {
             <Item
               title="Schedule"
               to="/icoordinator/schedule"
-              icon={<PeopleOutlinedIcon />}
+              icon={<CalendarMonthIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Training program"
               to="/icoordinator/tranning_program"
-              icon={<HelpOutlineOutlinedIcon />}
+              icon={<LocalLibraryIcon />}
               selected={selected}
               setSelected={setSelected}
             />

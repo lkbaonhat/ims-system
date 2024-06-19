@@ -18,8 +18,8 @@ const style = {
   p: 2,
 };
 
-export default function ModalDetail() {
-  const { modalOpen, handleClose, pdfFile } = useModalContext();
+export default function ModalDetail({ approved, rejected, image }) {
+  const { modalOpen, handleClose } = useModalContext();
 
   return (
     <div>
@@ -28,10 +28,10 @@ export default function ModalDetail() {
         onClose={handleClose}
       >
         <Box sx={style}>
-          <img style={{width: "100%", height: "96%", objectFit: "contain"}} src="https://firebasestorage.googleapis.com/v0/b/ims-system-e4f27.appspot.com/o/image%2Fjpegs%2FThi%E1%BA%BFt%20k%E1%BA%BF%20ch%C6%B0a%20c%C3%B3%20t%C3%AAn.jpg?alt=media&token=669d9482-5855-4f76-8496-992950f3bf68" alt="image" />
+          <img style={{width: "100%", height: "96%", objectFit: "contain"}} src={`${image}`} alt="image" />
           <Stack spacing={2} direction="row" justifyContent="center">
-            <Button variant="contained" color="success" startIcon={<CheckIcon/>}>Accept</Button>
-            <Button variant="contained" color="error" startIcon={<CloseIcon/>}>Cancel</Button>
+            <Button variant="contained" color="success" startIcon={<CheckIcon/>} onClick={approved}>Accept</Button>
+            <Button variant="contained" color="error" startIcon={<CloseIcon/>} onClick={rejected}>Cancel</Button>
           </Stack>
         </Box>
       </Modal>

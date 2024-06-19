@@ -4,27 +4,11 @@ import {Box,InputBase,Typography,IconButton,Autocomplete,Stack,TextField,Button}
 import SearchIcon from "@mui/icons-material/Search";
 //component
 import Table from "../../components/Table";
-//context file
-import { useModalContext } from "../../context/ModalContext";
 //api
 import { fetchInterviewees } from '../../services/apiServices';
-import ModalAdd from '../../components/Modal/AddModal';
 
 export default function IntervieweesList() {
   const [interviewees, setInterviewees] = React.useState([]);
-  
-  //Form add people
-  const { handleOpen } = useModalContext();
-
-  const handleOpenModal = () => {
-    handleOpen({
-      title: "Add people to interview",
-      peopleOptions: [],
-      onSubmit: (formData) => {
-        console.log(formData);
-      }, 
-    });
-  }
 
   //form filter
   const options = ["Option 1", "Option 2"];
@@ -146,10 +130,6 @@ export default function IntervieweesList() {
             },
           }}
         >
-          <Box sx={{ mt: "20px" }}>
-              <Button variant="contained" color="primary" onClick={handleOpenModal}>Add people</Button>
-              <ModalAdd />
-          </Box>
           <Table columns={columns} rows={interviewees} pageSize={10} />
         </Box>
       </Box>

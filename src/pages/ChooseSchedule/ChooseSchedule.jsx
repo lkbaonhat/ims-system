@@ -57,6 +57,7 @@ export default function ChooseSchedule() {
               options={time}
               renderInput={(params) => <TextField {...params} label="Time" />}
             />
+            <TextField fullWidth margin="normal" name="email" label="Email" variant="outlined"/>
             <Typography variant="body2" color="error" textAlign="start" mt={1}>*Note: Chọn thời gian bạn có thể tham gia phỏng vấn</Typography>
             <Button
               type="submit"

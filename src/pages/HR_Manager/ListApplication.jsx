@@ -15,6 +15,7 @@ import ModalDetail from "../../components/Modal/DetailModal";
 import {
   fetchApplication,
   fetchApplicationDetail,
+  updateStatusApplication,
 } from "../../services/apiServices";
 import { useParams } from "react-router-dom";
 import { useModalContext } from "../../context/ModalContext";
@@ -22,6 +23,7 @@ import { useModalContext } from "../../context/ModalContext";
 function ManageApplication() {
   const { id } = useParams();
   const [applications, setApplications] = React.useState([]);
+  const [detail, setDetail] = React.useState({});
   const [error, setError] = React.useState("");
   //form filter
   const options = ["Option 1", "Option 2"];
@@ -29,6 +31,8 @@ function ManageApplication() {
   const [inputValue, setInputValue] = React.useState("");
   //
   const { handleOpen } = useModalContext();
+  //
+  const [status, setStatus] = React.useState("");
 
   const getApplication = async () => {
     try {
@@ -44,11 +48,36 @@ function ManageApplication() {
     getApplication();
   }, []);
 
-  const handleRowButtonClick = (id) => {
-    const applicationDetail = fetchApplicationDetail(id);
-
-    handleOpen(applicationDetail);
+  const handleRowButtonClick = async (id) => {
+    try {
+      const applicationDetail = await fetchApplicationDetail(id);
+      setDetail(applicationDetail);
+    } catch (error) {
+      setError(error.message);
+    }
+    
+    handleOpen();
   };
+
+  const handleApprove = async () => {
+    setStatus("approved");
+    const rs = await updateStatusApplication(status, detail.id);
+    if (rs.status === 200) {
+      getApplication();
+    } else {
+      throw new Error("Failed to update status");
+    }
+  }
+
+  const handleReject = () => {
+    setStatus("rejected");
+    const rs = updateStatusApplication(status, detail.id);
+    if (rs.status === 200) {
+      getApplication();
+    } else {
+      throw new Error("Failed to update status");
+    }
+  }
 
   const columns = [
     { field: "id", headerName: "ID" },
@@ -178,7 +207,7 @@ function ManageApplication() {
             },
           }}
         >
-          <ModalDetail />
+          <ModalDetail approved={handleApprove} rejected={handleReject} image={detail.image}/>
           <Table columns={columns} rows={applications} pageSize={10} />
         </Box>
       </Box>

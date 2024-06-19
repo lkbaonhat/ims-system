@@ -1,5 +1,5 @@
 import { ThemeProvider, createTheme } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React from "react";
 //import component
 import Header from "./Header";
 import ICPage from "./ICPage";

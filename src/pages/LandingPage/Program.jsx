@@ -53,7 +53,7 @@ function Programs() {
             <CardItem />
           </Grid>
           <Stack direction="row" alignContent="center" justifyContent="center" width="100%" marginTop="20px">
-            <Button variant="outlined" sx={{fontWeight: "bold", borderRadius: "20px"}} onClick={handleSeeMore}>See more</Button>
+            <Button variant="outlined" sx={{fontWeight: "bold", borderRadius: "20px"}} onClick={handleSeeMore}>View all</Button>
           </Stack>
         </Grid>
     </Container>

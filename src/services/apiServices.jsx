@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const API_LOGIN_URL = 'http://localhost:8080/api/login';
 const API_CREATE_ACCOUNT_URL = 'http://localhost:8080/api/admin';
 const API_GETALL_ACCOUNT_URL = 'http://localhost:8080/api/admin';
@@ -126,6 +128,13 @@ export const createApplication = async (applicationData) => {
 
   return response.json();
 };
+
+export const updateStatusApplication = async (status, id) => {
+  const rs = await axios.put(`${API_GET_APPLICATION}/${id}`, {
+    status
+  });
+  return rs;
+}
 
 export const fetchSchedule = async () => {
   const response = await fetch(`${API_GET_SCHEDULE}`);
