@@ -8,6 +8,7 @@ import HRManagerPage from './pages/HR_Manager/HRManagerPage.jsx';
 import Auth from './services/Auth.jsx';
 import ICoordinatorPage from './pages/ICoordinator/ICoordinatorPage.jsx';
 import ChooseSchedule from './pages/ChooseSchedule/ChooseSchedule.jsx';
+import MentorPage from './pages/Mentor/MentorPage.jsx';
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/hrmanager/*" element={<HRManagerPage/>}/>
           <Route path="/admin/*" element={<AdminPage/>}/>
           <Route path="/icoordinator/*" element={<ICoordinatorPage/>} />
+          <Route path="/mentor/*" element={<MentorPage/>} />
           <Route path="/chooseSchedule" element={<ChooseSchedule/>}/>
         </Routes>
     </div> 
