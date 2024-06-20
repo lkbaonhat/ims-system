@@ -10,7 +10,6 @@ export const ModalProvider = ({ children }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [formData, setFormData] = useState({});
   const [alertOpen, setAlertOpen] = useState(false);
-  const [pdfFile, setPdfFile] = useState('');
 
   const handleOpen = (initialFormData) => {
     setFormData(initialFormData);
@@ -57,7 +56,6 @@ export const ModalProvider = ({ children }) => {
         });
         //Add the download URL to the formData
         formData.file = downloadURL;
-        setPdfFile(downloadURL);
       }
       onSubmit(formData) 
       setAlertOpen(true);
@@ -81,7 +79,6 @@ export const ModalProvider = ({ children }) => {
         formData,
         handleChange,
         handleSubmit,
-        pdfFile
       }}
     >
       {children}

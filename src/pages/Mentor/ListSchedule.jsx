@@ -1,4 +1,5 @@
 import React from "react";
+//mui library
 import {
   Box,
   InputBase,
@@ -11,9 +12,16 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import Table from "../../components/Table";
+//apiServices
 import { fetchSchedule } from "../../services/apiServices";
+//router
 import { useNavigate, useParams } from "react-router-dom";
+//component
+import Table from "../../components/Table";
+import ModalConfirm from "../../components/Modal/ModalConfirm";
+//context
+import { useModalContext } from "../../context/ModalContext";
+
 
 export default function ListSchedule() {
   const { id } = useParams();
@@ -24,6 +32,8 @@ export default function ListSchedule() {
   const options = ["Option 1", "Option 2"];
   const [value, setValue] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState("");
+  //modal
+  const { handleOpen, handleClose } = useModalContext();
 
   const getSchedule = async () => {
     try {
@@ -39,31 +49,16 @@ export default function ListSchedule() {
     getSchedule();
   }, []);
 
-  const scheduleFields = [
-    {name: 'date', type: 'date'},
-    {name: 'time', type: 'time'},
-    {name: 'location', label: 'Location', type: 'text'},
-    {name: 'interviewer', label: 'Interviewer', type: 'text'},
-  ]
-
-  const handleFormSubmit = async ( formData) => {
-    console.log('Form Data:', formData);
-
-    // try {
-    //   const response = await createPostAPI(formData);
-    //   console.log('Create successfully', response);
-    //   await getListUser();
-    // } catch(error) {
-    //   console.log('Create fail');
-    // }
-  };
-
   const viewIntervieweesList = () => {
      navigate(`/icoordinator/schedule/${id}/list-interviewees`);
   }
 
   const handleRowButtonClick = (id) => {
-    console.log(id);
+    handleOpen();
+  }
+
+  const handleAccept = () => {
+
   }
 
   const columns = [
@@ -178,6 +173,7 @@ export default function ListSchedule() {
           },
         }}
       >
+        <ModalConfirm accept={handleAccept} cancel={() => handleClose()}/>
         <Table columns={columns} rows={schedule} pageSize={10} />
       </Box>
     </Box>
