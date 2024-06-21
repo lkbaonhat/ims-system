@@ -7,7 +7,7 @@ export default function TranningProgram() {
   const navigate = useNavigate();
   const viewProgram = (id) => {
     //navigate to schedule page
-    navigate(`/icoordinator/tranning_program/campaign${id}`);
+    navigate(`/icoordinator/tranning_program/${id}`);
   }
 
   return (

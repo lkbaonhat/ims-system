@@ -7,7 +7,7 @@ function ManageApplication() {
   const navigate = useNavigate();
   const viewSchedule = (id) => {
     //navigate to schedule page
-    navigate(`/icoordinator/schedule/campaign${id}`);
+    navigate(`/icoordinator/schedule/${id}`);
   };
   return (
     <CampaignData>
