@@ -1,6 +1,5 @@
 import React from "react";
 //mui
-import { Grid } from "@mui/material";
 //component
 import CampaignsList from "../../components/CampaignsList";
 import CampaignData from "../../hooks/useFetchData";

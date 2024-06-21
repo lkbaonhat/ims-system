@@ -1,24 +1,20 @@
 import React from 'react';
-import { Box, Toolbar, Container, Typography, Paper } from '@mui/material';
+//components
+import CampaignsList from "../../components/CampaignsList";
+import CampaignData from "../../hooks/useFetchData";
+//react-router-dom
+import { useNavigate } from "react-router-dom";
 
 function ManageIntern() {
+  const navigate = useNavigate();
+  const viewInternList = (id) => {
+    //navigate to schedule page
+    navigate(`/hrmanager/manage_intern/${id}`);
+  }
   return (
-    <Box sx={{ display: 'flex' }}>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-      >
-        <Toolbar />
-        <Container>
-          <Typography variant="h4" gutterBottom>
-            Manage Interns
-          </Typography>
-          <Paper elevation={3} sx={{ p: 2 }}>
-            {/* Add your intern management UI here */}
-          </Paper>
-        </Container>
-      </Box>
-    </Box>
+      <CampaignData>
+        {(campaigns) => <CampaignsList campaigns={campaigns} view={viewInternList} />}
+      </CampaignData>
   );
 }
 

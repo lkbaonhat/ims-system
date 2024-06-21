@@ -12,6 +12,8 @@ import ManageIntern from "./ManageIntern";
 import CreatePost from "./CreatePost";
 import ListApplication from "./ListApplication";
 import { ModalProvider } from "../../context/ModalContext";
+import InternList from "./InternList";
+import InternProfile from "./InternProfile";
 
 function HRManagerPage() {
 
@@ -30,6 +32,8 @@ function HRManagerPage() {
                 <Route path="/manage_application" element={<ManageApplication />}/>
                 <Route path="/manage_application/:id" element={<ListApplication />} />
                 <Route path="/manage_intern" element={<ManageIntern />} />
+                <Route path="/manage_intern/:id" element={<InternList />} />
+                <Route path="/manage_intern/:id/intern_profile" element={<InternProfile />} />
               </Routes>
             </ModalProvider>
           </main>

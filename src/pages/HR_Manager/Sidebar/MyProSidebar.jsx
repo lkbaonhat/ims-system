@@ -9,7 +9,7 @@ import { useTheme, Box, Typography, IconButton } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { AssignmentOutlined } from "@mui/icons-material";
 import { CampaignOutlined } from "@mui/icons-material";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import PeopleIcon from '@mui/icons-material/People';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
@@ -126,9 +126,9 @@ const MyProSidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="FAQ Page"
+              title="Manage intern"
               to="/hrmanager/manage_intern"
-              icon={<HelpOutlineOutlinedIcon />}
+              icon={<PeopleIcon />}
               selected={selected}
               setSelected={setSelected}
             />
